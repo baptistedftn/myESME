@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "156832184704",
+    "project_id": "sudrimaker-myesme",
+    "storage_bucket": "sudrimaker-myesme.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156832184704:android:1c5ade9cc464ad05aae965",
+        "android_client_info": {
+          "package_name": "fr.sudrimaker.myesme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa9uL7GkB4gRzbiLBzPiDOdr2s_UuhXOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

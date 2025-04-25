@@ -1,4 +1,4 @@
-package com.sudrimaker.myesme.ui.map
+package fr.sudrimaker.myesme.ui.map
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

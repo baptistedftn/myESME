@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.sudrimaker.myesme.ui.map.MapFragment"
+        android:name="fr.sudrimaker.myesme.ui.map.MapFragment"
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.sudrimaker.myesme.ui.dashboard.DashboardFragment"
+        android:name="fr.sudrimaker.myesme.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.sudrimaker.myesme.ui.menu.MenuFragment"
+        android:name="fr.sudrimaker.myesme.ui.menu.MenuFragment"
         android:label="@string/title_menu"
         tools:layout="@layout/fragment_menu" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.sudrimaker.myesme.ui.map
+package fr.sudrimaker.myesme.ui.map
 //import androidx.compose.ui.tooling.data.position
 import android.content.Context
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
-import com.sudrimaker.myesme.R
-import com.sudrimaker.myesme.databinding.FragmentMapBinding
+import fr.sudrimaker.myesme.R
+import fr.sudrimaker.myesme.databinding.FragmentMapBinding
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
@@ -37,6 +37,7 @@ class MapFragment : Fragment() {
         )
 //        binding.mapView.setTileSource(TileSourceFactory.MAPNIK)
         binding.mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
+//        binding.mapView.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT)
         binding.mapView.setMultiTouchControls(true)
 
 

@@ -1,4 +1,4 @@
-package com.sudrimaker.myesme.ui.menu
+package fr.sudrimaker.myesme.ui.menu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

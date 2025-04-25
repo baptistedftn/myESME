@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.menu.MenuFragment">
 
+    <include
+        android:id="@+id/floatingHeader"
+        layout="@layout/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text_menu"
         android:layout_width="match_parent"
@@ -18,36 +25,47 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TextView" />
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cardView"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center|center_horizontal">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="124dp"
-                android:layout_height="29dp"
-                android:text="TextView"
-                android:textAlignment="textStart"
-                android:textSize="20sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="16dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|fill_horizontal"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="113dp"
-                android:layout_height="62dp"
-                android:background="#00FFFFFF"
-                android:src="@drawable/chevron_right_24px"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="219dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/chevron_right_24px" />
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
