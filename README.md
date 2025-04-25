@@ -1,4 +1,6 @@
 # myESME
+<img src="docs/logo.svg" alt="myESME" width="200" height="200">
+
 
 myESME is an Android application designed for students of the ESME engineering school. The app provides a seamless way to access essential information and services, including:
 
@@ -42,6 +44,10 @@ The app is built using **Jetpack Compose** and follows the **Material 3 Design G
 - **Material 3**: Latest design system for Android apps.
 - **Android SDK**: Core framework for building Android apps.
 - **Gradle**: Dependency management and build automation.
+
+## Project Background
+
+This project was initiated in 2025 as part of the Innovation Course at ESME Lille. The goal was to create a practical and user-friendly application to enhance the daily lives of students by integrating essential academic and campus-related services into a single platform.
 
 ## Contributing
 
