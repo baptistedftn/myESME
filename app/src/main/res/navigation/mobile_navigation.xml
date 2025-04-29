@@ -3,36 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_dashboard">
+    app:startDestination="@id/navigation_dashboard">
 
+    <!-- Écran de la map -->
     <fragment
         android:id="@+id/navigation_map"
         android:name="fr.sudrimaker.myesme.ui.map.MapFragment"
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 
+    <!-- Dashboard -->
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="fr.sudrimaker.myesme.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
-    <fragment
+    <navigation
         android:id="@+id/navigation_menu"
-        android:name="fr.sudrimaker.myesme.ui.menu.MenuFragment"
-        android:label="@string/title_menu"
-        tools:layout="@layout/fragment_menu" >
-        <action
-            android:id="@+id/action_navigation_menu_to_navigation_profile3"
-            app:destination="@id/navigation_profile" />
-    </fragment>
+        app:startDestination="@id/navigation_menu_main">
 
-    <fragment
-        android:id="@+id/navigation_profile"
-        android:name="fr.sudrimaker.myesme.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
-    <action
-        android:id="@+id/action_global_navigation_menu"
-        app:destination="@id/navigation_menu" />
+        <fragment
+            android:id="@+id/navigation_menu_main"
+            android:name="fr.sudrimaker.myesme.ui.menu.MenuFragment"
+            android:label="@string/title_menu"
+            tools:layout="@layout/fragment_menu">
+
+            <action
+                android:id="@+id/action_menu_to_profile"
+                app:destination="@id/navigation_profile" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/navigation_profile"
+            android:name="fr.sudrimaker.myesme.ui.profile.ProfileFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/fragment_profile" />
+        <action
+            android:id="@+id/action_global_navigation_menu_main"
+            app:destination="@id/navigation_menu_main" />
+
+    </navigation>
 </navigation>

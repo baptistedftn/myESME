@@ -25,7 +25,19 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.profileButton.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_menu_to_navigation_profile3)
+            findNavController().navigate(R.id.action_menu_to_profile)
+        }
+
+        binding.assosButton.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_to_profile)
+        }
+
+        binding.notesButton.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_to_profile)
+        }
+
+        binding.fichesButton.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_to_profile)
         }
     }
 
