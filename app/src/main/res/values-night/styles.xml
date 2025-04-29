@@ -1,5 +1,5 @@
 <resources>
     <style name="Widget.Theme.MyESME.MyView" parent="">
-        <item name="android:background">@color/gray_600</item>
+        <item name="android:background">@color/surface</item>
     </style>
 </resources>

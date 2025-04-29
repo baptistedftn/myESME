@@ -3,4 +3,12 @@
     <string name="title_map">Carte</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_menu">Menu</string>
+    <string name="title_profile">Profile</string>
+    <string name="connexion">Connexion</string>
+    <string name="coaching">Coaching</string>
+    <string name="profil">Profil</string>
+    <string name="assos">Assos</string>
+    <string name="notes">Notes</string>
+    <string name="fiches_de_cours">Fiches de cours</string>
+    <string name="mot_de_passe_esme">Mot de passe ESME</string>
 </resources>

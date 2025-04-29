@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "156832184704",
+    "firebase_url": "https://sudrimaker-myesme-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "sudrimaker-myesme",
     "storage_bucket": "sudrimaker-myesme.firebasestorage.app"
   },

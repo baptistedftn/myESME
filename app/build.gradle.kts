@@ -49,9 +49,11 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.play.services.maps)
+    implementation(libs.androidx.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.osmdroid.android)
-    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.firestore)
 }
