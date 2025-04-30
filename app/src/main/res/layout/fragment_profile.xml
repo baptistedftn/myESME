@@ -6,22 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/arrow_back_24px"
-        app:title="@string/title_profile" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ScrollView
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:navigationIcon="@drawable/arrow_back_24px"
+            app:title="@string/title_profile" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Note: A RecyclerView can also be used -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_marginTop="?attr/actionBarSize"
         android:padding="16dp"
         android:scrollbars="none">
@@ -151,19 +157,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_anchor="@id/search_bar">
-
-                   <ScrollView
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent">
-                       <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent">
-                           Hello
-                       </TextView>
-                   </ScrollView>
                 </com.google.android.material.search.SearchView>
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

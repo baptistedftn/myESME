@@ -12,7 +12,7 @@
         android:id="@+id/logo"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:contentDescription="Logo"
+        android:contentDescription="@string/myesme"
         android:src="@drawable/logo" />
 
 </LinearLayout>

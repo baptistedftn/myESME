@@ -1,5 +1,4 @@
 package fr.sudrimaker.myesme.ui.map
-//import androidx.compose.ui.tooling.data.position
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
 import fr.sudrimaker.myesme.R
 import fr.sudrimaker.myesme.databinding.FragmentMapBinding
 import org.osmdroid.config.Configuration

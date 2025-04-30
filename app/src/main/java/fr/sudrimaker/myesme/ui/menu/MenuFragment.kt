@@ -1,5 +1,4 @@
 package fr.sudrimaker.myesme.ui.menu
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
