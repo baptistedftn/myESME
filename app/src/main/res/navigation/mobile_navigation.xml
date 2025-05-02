@@ -37,6 +37,14 @@
                 app:launchSingleTop="true"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            <action
+                android:id="@+id/action_menu_to_notes"
+                app:destination="@id/navigation_notes"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:launchSingleTop="true"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         </fragment>
 
         <fragment
@@ -44,6 +52,11 @@
             android:name="fr.sudrimaker.myesme.ui.profile.ProfileFragment"
             android:label="@string/title_profile"
             tools:layout="@layout/fragment_profile" />
+        <fragment
+            android:id="@+id/navigation_notes"
+            android:name="fr.sudrimaker.myesme.ui.notes.NotesFragment"
+            android:label="@string/title_notes"
+            tools:layout="@layout/fragment_notes" />
         <action
             android:id="@+id/action_global_navigation_menu_main"
             app:destination="@id/navigation_menu_main"
