@@ -47,7 +47,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Arrow"
+                android:contentDescription="@string/chevron_right_icon"
                 android:src="@drawable/chevron_right_24px" />
         </LinearLayout>
 
@@ -74,7 +74,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Arrow"
+                android:contentDescription="@string/chevron_right_icon"
                 android:src="@drawable/chevron_right_24px" />
         </LinearLayout>
 
@@ -100,7 +100,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Arrow"
+                android:contentDescription="@string/chevron_right_icon"
                 android:src="@drawable/chevron_right_24px" />
         </LinearLayout>
 
@@ -126,7 +126,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Arrow"
+                android:contentDescription="@string/chevron_right_icon"
                 android:src="@drawable/chevron_right_24px" />
         </LinearLayout>
 

@@ -52,11 +52,13 @@
             android:name="fr.sudrimaker.myesme.ui.profile.ProfileFragment"
             android:label="@string/title_profile"
             tools:layout="@layout/fragment_profile" />
+
         <fragment
             android:id="@+id/navigation_notes"
             android:name="fr.sudrimaker.myesme.ui.notes.NotesFragment"
             android:label="@string/title_notes"
             tools:layout="@layout/fragment_notes" />
+
         <action
             android:id="@+id/action_global_navigation_menu_main"
             app:destination="@id/navigation_menu_main"

@@ -1,16 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">myESME</string>
+    <string name="app_name" translatable="false">myESME</string>
     <string name="title_map">Carte</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_menu">Menu</string>
     <string name="title_profile">Profile</string>
     <string name="connexion">Connexion</string>
     <string name="coaching">Coaching</string>
-    <string name="profil">Profil</string>
+    <string name="profil">Profile</string>
     <string name="assos">Assos</string>
     <string name="notes">Notes</string>
     <string name="fiches_de_cours">Fiches de cours</string>
     <string name="mot_de_passe_esme">Mot de passe ESME</string>
-    <string name="myesme">myESME</string>
+    <string name="myesme" translatable="false">myESME</string>
     <string name="title_notes">Notes</string>
+    <string name="bonjour">Bonjour !</string>
+    <string name="planning_cours">Planning Cours</string>
+    <string name="actualites">Actualités</string>
+    <string name="chevron_right_icon" translatable="false">chevron_right_icon</string>
+    <string name="disconnected">Non connecté</string>
+    <string name="email_esme">Email ESME</string>
 </resources>

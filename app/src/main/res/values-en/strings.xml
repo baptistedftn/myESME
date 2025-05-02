@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_map">Map</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_menu">Menu</string>
+    <string name="title_profile">Profil</string>
+    <string name="connexion">Connection</string>
+    <string name="coaching">Coaching</string>
+    <string name="profil">Profil</string>
+    <string name="assos">Clubs</string>
+    <string name="notes">Grades</string>
+    <string name="fiches_de_cours">Courses</string>
+    <string name="mot_de_passe_esme">ESME Password</string>
+    <string name="title_notes">Grades</string>
+    <string name="bonjour">Hello !</string>
+    <string name="planning_cours">Schedule</string>
+    <string name="actualites">News</string>
+    <string name="disconnected">Not connected</string>
+    <string name="email_esme">ESME mail address</string>
+</resources>

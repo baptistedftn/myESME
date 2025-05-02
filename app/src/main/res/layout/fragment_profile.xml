@@ -41,7 +41,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-
                 >
 
                 <ImageView
@@ -49,6 +48,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circle_background"
+                    android:contentDescription="@string/profil"
                     android:padding="2dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/person_24px" />
@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Aldric Franz Duwelz"
+                        android:text="@string/disconnected"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Ingé1 | Lille"
+                        android:text=""
                         android:textColor="#666666"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -92,7 +92,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email ESME"
+                android:hint="@string/email_esme"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 >
                 <com.google.android.material.textfield.TextInputEditText

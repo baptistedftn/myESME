@@ -32,7 +32,7 @@ class MenuFragment : Fragment() {
         }
 
         binding.notesButton.setOnClickListener {
-            findNavController().navigate(R.id.action_menu_to_profile)
+            findNavController().navigate(R.id.action_menu_to_notes)
         }
 
         binding.fichesButton.setOnClickListener {
