@@ -60,8 +60,7 @@ class NotesFragment : Fragment() {
         binding.toolbar.setOnClickListener {
             findNavController().navigate(R.id.action_global_navigation_menu_main)
         }
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.notesRecyclerView)
+        val recyclerView = binding.notesRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = NotesAdapter(notes)
     }
