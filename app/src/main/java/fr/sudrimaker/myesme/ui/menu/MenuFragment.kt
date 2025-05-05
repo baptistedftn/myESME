@@ -28,7 +28,7 @@ class MenuFragment : Fragment() {
         }
 
         binding.assosButton.setOnClickListener {
-            findNavController().navigate(R.id.action_menu_to_profile)
+            findNavController().navigate(R.id.action_menu_to_assos)
         }
 
         binding.notesButton.setOnClickListener {

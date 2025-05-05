@@ -21,4 +21,5 @@
     <string name="disconnected">Non connecté</string>
     <string name="email_esme">Email ESME</string>
     <string name="chose_module">Choisissez un module</string>
+    <string name="title_assos">Assos</string>
 </resources>
