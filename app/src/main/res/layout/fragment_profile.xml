@@ -7,6 +7,7 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,21 +28,24 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_marginTop="?attr/actionBarSize"
         android:padding="16dp"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/profile_image"
@@ -80,84 +84,111 @@
 
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/connexion"
-                android:textStyle="bold"
-                android:textSize="18sp"
+                android:layout_gravity="start"
                 android:layout_marginTop="24dp"
-                android:layout_gravity="start"/>
+                android:text="@string/connexion"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email_esme"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                >
+                android:hint="@string/email_esme">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-                    />
+
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/mot_de_passe_esme"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                >
+                android:hint="@string/mot_de_passe_esme">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-                    />
+                    android:inputType="textPassword"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_connect"
+                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/connexion"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#E0D4FF"
-                android:textColor="#660099"
                 android:drawableStart="@drawable/check_24px"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="8dp"
+                android:text="@string/connexion"
+                android:textColor="#660099" />
 
             <!-- Coaching -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/coaching"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="32dp"
-                android:layout_gravity="start"/>
 
             <LinearLayout
+                android:id="@+id/coaching"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="start"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
 
-                <com.google.android.material.materialswitch.MaterialSwitch
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:checked="false"
-                    app:thumbIcon="@drawable/school_24px" />
-                <com.google.android.material.search.SearchBar
-                    android:id="@+id/search_bar"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/coaching"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <com.google.android.material.search.SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_anchor="@id/search_bar">
-                </com.google.android.material.search.SearchView>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_coaching"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="false"
+                        android:padding="4dp"
+                        app:thumbIcon="@drawable/school_24px" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/coaching_dropdown_layout"
+                        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/chose_module"
+                        android:visibility="gone">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/coaching_dropdown_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:labelFor="@id/coaching_dropdown_layout" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

@@ -17,4 +17,5 @@
     <string name="actualites">News</string>
     <string name="disconnected">Not connected</string>
     <string name="email_esme">ESME mail address</string>
+    <string name="chose_module">Choose a module</string>
 </resources>
