@@ -15,7 +15,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class AssosAdapter(private val assos: List<Asso>) :
+class AssosAdapter(private val assos: List<AssoEvent>) :
     RecyclerView.Adapter<AssosAdapter.AssoViewHolder>() {
 
     inner class AssoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,29 +38,44 @@ class AssosAdapter(private val assos: List<Asso>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: AssoViewHolder, position: Int) {
         val asso = assos[position]
-        holder.textAssociation.text = asso.name
-        holder.textCampus.text = asso.campus
-        holder.textEventTitle.text = asso.event
+        holder.textAssociation.text = asso.assoName
+        holder.textCampus.text = asso.campusName
+        holder.textEventTitle.text = asso.eventName
 
         Glide.with(holder.itemView.context)
             .load(asso.imageUrl)
-//            .placeholder(R.drawable.placeholder) // image temporaire
-//            .error(R.drawable.error_image)       // si l'image échoue
+            .placeholder(R.drawable.placeholder_image)
+            .error(R.drawable.placeholder_image)
             .into(holder.imageAsso)
 
-        val localDateTime = asso.date?.toDate()
-            ?.toInstant()
+        val formattedDate = formateDate(asso)
+
+        holder.textDateTime.text = formattedDate
+        holder.textLocation.text = "\uD83D\uDCCD ${asso.location}"
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun formateDate(asso: AssoEvent): String {
+        val localDateTime = asso.date.toDate()
+            .toInstant()
             ?.atZone(ZoneId.systemDefault())
             ?.toLocalDateTime()
+        if (localDateTime != null) {
+            if (localDateTime.hour == 0 && localDateTime.second == 0) {
+                val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale("fr"))
 
+                val formattedDate = localDateTime.format(formatter)?.let {
+                    "📅 $it"
+                } ?: "📅 Date inconnue"
+                return formattedDate
+            }
+        }
         val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy · 🕓 HH'h'mm", Locale("fr"))
 
         val formattedDate = localDateTime?.format(formatter)?.let {
             "📅 $it"
         } ?: "📅 Date inconnue"
-
-        holder.textDateTime.text = formattedDate
-        holder.textLocation.text = "\uD83D\uDCCD ${asso.location}"
+        return formattedDate
     }
 
     override fun getItemCount(): Int = assos.size
