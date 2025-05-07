@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.Timestamp
-import java.time.LocalDateTime
-import java.time.ZoneId
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 import fr.sudrimaker.myesme.R
 import fr.sudrimaker.myesme.databinding.FragmentAssosBinding
 
@@ -22,48 +20,64 @@ class AssosFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: AssosAdapter
+    private lateinit var assosAdapter: AssosAdapter
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    val mockEvents = listOf(
-        Asso(
-            name = "Sudrimaker",
-            event = "Atelier robotique",
-            date = Timestamp(
-                LocalDateTime.of(2025, 5, 12, 14, 0)
-                    .atZone(ZoneId.systemDefault())
-                    .toInstant()
-            ),
-            campus = "Lille",
-            location = "Atelier Sudrimaker",
-            imageUrl = "https://picsum.photos/id/1/600/400"
-        ),
-        Asso(
-            name = "BDE",
-            event = "Soirée d'intégration",
-            date = Timestamp(
-                LocalDateTime.of(2025, 10, 20, 21, 0)
-                    .atZone(ZoneId.systemDefault())
-                    .toInstant()
-            ),
-            campus = "Lille",
-            location = "Imprévu",
-            imageUrl = "https://picsum.photos/id/117/600/400"
-        ),
-        Asso(
-            name = "BDS",
-            event = "Ovalies",
-            date = Timestamp(
-                LocalDateTime.of(2025, 5, 8, 9, 30)
-                    .atZone(ZoneId.systemDefault())
-                    .toInstant()
-            ),
-            campus = "Paris, Bordeaux, Lille",
-            location = "Stade Marcel Communeau - Beauvais",
-            imageUrl = "https://picsum.photos/id/73/600/400"
-        )
-    )
+    private val db = FirebaseFirestore.getInstance()
 
+    private fun setupRecyclerView(events: List<AssoEvent>) {
+        val sortedEvents = events.sortedBy { it.date }
+
+        recyclerView = binding.assosRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        assosAdapter = AssosAdapter(sortedEvents)
+        recyclerView.adapter = assosAdapter
+
+        binding.loader.visibility = View.GONE
+        binding.assosRecyclerView.visibility = View.VISIBLE
+    }
+
+    private fun fetchEvents(campusFilter: String) {
+        binding.loader.visibility = View.VISIBLE
+        binding.assosRecyclerView.visibility = View.GONE
+
+        val eventsList = mutableListOf<AssoEvent>()
+
+        val eventsRef = db.collection("assos_events")
+
+        eventsRef.whereEqualTo("campus", campusFilter)
+            .orderBy("date")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val event = document.toObject(AssoEvent::class.java)
+                    event.asso?.get()?.addOnSuccessListener { assoDoc ->
+                        val assoName = assoDoc.getString("name") ?: ""
+                        event.assoName = assoName
+                        eventsList.add(event)
+                        if (eventsList.size == documents.size()) {
+                            setupRecyclerView(eventsList)
+                        }
+                    }?.addOnFailureListener {
+                        eventsList.add(event)
+                        if (eventsList.size == documents.size()) {
+                            setupRecyclerView(eventsList)
+                        }
+                    }
+                }
+
+                if (documents.isEmpty) {
+                    binding.loader.visibility = View.GONE
+                }
+            }
+            .addOnFailureListener { _ ->
+                binding.loader.visibility = View.GONE
+            }
+    }
+
+    private fun getFavoriteCampus(): String {
+        val sharedPreferences = requireActivity().getSharedPreferences("myESMEprefs", 0)
+        return sharedPreferences.getString("favoriteCampus", "Lille") ?: "Lille"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,22 +85,20 @@ class AssosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAssosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.toolbar.setOnClickListener {
             findNavController().navigate(R.id.action_global_navigation_menu_main)
         }
+        val favoriteCampus = getFavoriteCampus()
 
-        val recyclerView = binding.assosRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.adapter = AssosAdapter(events)
-        recyclerView.adapter = AssosAdapter(mockEvents)
+        fetchEvents(favoriteCampus)
+
     }
 
     override fun onDestroyView() {

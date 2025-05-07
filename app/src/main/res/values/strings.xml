@@ -4,10 +4,10 @@
     <string name="title_map">Carte</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_menu">Menu</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_profile">Réglages</string>
     <string name="connexion">Connexion</string>
     <string name="coaching">Coaching</string>
-    <string name="profil">Profile</string>
+    <string name="profil">Réglages</string>
     <string name="assos">Assos</string>
     <string name="notes">Notes</string>
     <string name="fiches_de_cours">Fiches de cours</string>

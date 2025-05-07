@@ -1,4 +1,5 @@
 package fr.sudrimaker.myesme.ui.profile
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
 import fr.sudrimaker.myesme.R
 import fr.sudrimaker.myesme.databinding.FragmentProfileBinding
 
@@ -17,7 +19,20 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val fruits = listOf("Outils Maths", "Maths Fonda", "Anglais", "Système Technique")
+    private val coachingModules =
+        listOf("Outils Maths", "Maths Fonda", "Anglais", "Système Technique")
+
+    fun fetchCampusList(onComplete: (List<String>) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("campus").get()
+            .addOnSuccessListener { result ->
+                val campusList = result.mapNotNull { it.getString("name") }
+                onComplete(campusList)
+            }
+            .addOnFailureListener {
+                onComplete(emptyList())
+            }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +40,6 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-
 
         return binding.root
     }
@@ -54,9 +68,12 @@ class ProfileFragment : Fragment() {
             }
         }
 
-
         val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, fruits)
+            ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                coachingModules
+            )
 
         coachingDropdownMenu.setAdapter(adapter)
 
@@ -75,7 +92,6 @@ class ProfileFragment : Fragment() {
             .error(R.drawable.person_24px)
             .circleCrop()
             .into(imageView)
-
     }
 
     override fun onDestroyView() {
