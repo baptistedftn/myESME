@@ -104,31 +104,31 @@
                 android:src="@drawable/chevron_right_24px" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/fiches_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="16dp">
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/fiches_button"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="?attr/selectableItemBackground"-->
+        <!--            android:clickable="true"-->
+        <!--            android:focusable="true"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:paddingVertical="16dp">-->
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/fiches_de_cours"
-                android:textColor="#000"
-                android:textSize="18sp" />
+        <!--            <TextView-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:text="@string/fiches_de_cours"-->
+        <!--                android:textColor="#000"-->
+        <!--                android:textSize="18sp" />-->
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/chevron_right_icon"
-                android:src="@drawable/chevron_right_24px" />
-        </LinearLayout>
+        <!--            <ImageView-->
+        <!--                android:layout_width="24dp"-->
+        <!--                android:layout_height="24dp"-->
+        <!--                android:contentDescription="@string/chevron_right_icon"-->
+        <!--                android:src="@drawable/chevron_right_24px" />-->
+        <!--        </LinearLayout>-->
 
     </LinearLayout>
 
