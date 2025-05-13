@@ -54,12 +54,12 @@ class MapFragment : Fragment() {
         locationOverlay.enableMyLocation()
         binding.mapView.overlays.add(locationOverlay)
 
-        val schoolPoint = Marker(binding.mapView)
-        schoolPoint.position = startPoint
-        schoolPoint.icon = context?.let { ContextCompat.getDrawable(it, R.drawable.esme_loc) }
-        schoolPoint.title = "ESME Lille"
-        schoolPoint.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        binding.mapView.overlays.add(schoolPoint)
+//        val schoolPoint = Marker(binding.mapView)
+//        schoolPoint.position = startPoint
+//        schoolPoint.icon = context?.let { ContextCompat.getDrawable(it, R.drawable.esme_loc) }
+//        schoolPoint.title = "ESME Lille"
+//        schoolPoint.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+//        binding.mapView.overlays.add(schoolPoint)
 
         return binding.root
     }
