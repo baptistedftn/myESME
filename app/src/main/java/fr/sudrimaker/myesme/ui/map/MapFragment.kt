@@ -33,14 +33,12 @@ class MapFragment : Fragment() {
             context,
             context?.getSharedPreferences("osmdroid", Context.MODE_PRIVATE)
         )
-//        binding.mapView.setTileSource(TileSourceFactory.MAPNIK)
         binding.mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
-//        binding.mapView.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT)
         binding.mapView.setMultiTouchControls(true)
 
 
         val mapController = binding.mapView.controller
-        mapController.setZoom(20.0)
+        mapController.setZoom(19.0)  // Ajusté à 19 pour une meilleure vue
         val startPoint = GeoPoint(50.6330873, 3.0495969)
         mapController.setCenter(startPoint)
 
@@ -48,6 +46,8 @@ class MapFragment : Fragment() {
             CompassOverlay(context, InternalCompassOrientationProvider(context), binding.mapView)
         compassOverlay.enableCompass()
         binding.mapView.overlays.add(compassOverlay)
+
+        addSvgOverlay()
 
         val locationOverlay =
             MyLocationNewOverlay(GpsMyLocationProvider(context), binding.mapView)
@@ -64,6 +64,41 @@ class MapFragment : Fragment() {
         return binding.root
     }
 
+    private fun addSvgOverlay() {
+        // Coordonnées précises pour le positionnement de l'image
+        // Ces coordonnées sont ajustées pour correspondre à l'emplacement exact
+        val centerLat = 50.633060
+        val centerLon = 3.049990
+        val zoomLevel = 19
+
+        // Créer le point central
+        val centerPoint = GeoPoint(centerLat, centerLon)
+
+        // Créer et ajouter l'overlay avec l'image SVG
+        context?.let { ctx ->
+            // Calculer la taille de l'overlay en fonction du zoom
+            // Réduire le facteur d'échelle pour un meilleur ajustement
+            val spanFactor = SVGOverlay.getSpanFactorForZoom(zoomLevel) * 0.9
+
+            // Utiliser le bon ratio d'aspect pour l'image map_lille
+            val aspectRatio =
+                1.4595562f  // Vérifiez cette valeur avec les dimensions de votre image
+
+            val imageOverlay = SVGOverlay(
+                ctx,
+                R.drawable.map_lille0,
+                centerPoint,
+                spanFactor,
+                aspectRatio
+            )
+
+            binding.mapView.overlays.add(imageOverlay)
+        }
+
+        // Forcer le rafraîchissement de la carte
+        binding.mapView.invalidate()
+    }
+
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
@@ -74,8 +109,9 @@ class MapFragment : Fragment() {
         binding.mapView.onPause()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.mapView.onPause()
         _binding = null
     }
 }
