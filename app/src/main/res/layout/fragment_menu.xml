@@ -41,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/profil"
-                android:textColor="#000"
                 android:textSize="18sp" />
 
             <ImageView
@@ -68,7 +67,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/assos"
-                android:textColor="#000"
                 android:textSize="18sp" />
 
             <ImageView
@@ -94,7 +92,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/notes"
-                android:textColor="#000"
                 android:textSize="18sp" />
 
             <ImageView

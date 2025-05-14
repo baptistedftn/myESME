@@ -17,6 +17,7 @@
             android:id="@+id/imageEvent"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:background="@color/surface"
             android:contentDescription="@string/illustration"
             android:scaleType="centerCrop" />
 
