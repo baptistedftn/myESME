@@ -1,5 +1,6 @@
 [versions]
 agp = "8.9.0"
+androidsvg = "1.4"
 firebaseBom = "33.13.0"
 glide = "4.16.0"
 kotlin = "1.9.24"
@@ -17,9 +18,14 @@ navigationUiKtx = "2.8.9"
 osmdroidAndroid = "6.1.18"
 playServicesMaps = "19.1.0"
 preference = "1.2.0"
+vectordrawable = "1.2.0"
+vectordrawableAnimated = "1.2.0"
 
 [libraries]
+androidsvg = { module = "com.caverock:androidsvg", version.ref = "androidsvg" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-vectordrawable = { module = "androidx.vectordrawable:vectordrawable", version.ref = "vectordrawable" }
+androidx-vectordrawable-animated = { module = "androidx.vectordrawable:vectordrawable-animated", version.ref = "vectordrawableAnimated" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }

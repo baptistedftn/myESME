@@ -57,4 +57,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
     implementation(libs.glide)
+    implementation(libs.androidsvg)
+    implementation(libs.androidx.vectordrawable)
+    implementation(libs.androidx.vectordrawable.animated)
 }
