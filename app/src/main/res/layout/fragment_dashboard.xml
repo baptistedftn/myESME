@@ -37,66 +37,70 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/planning_cours"
+                    android:text="Planning Cours"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/chevron_right_icon"
                     android:src="@drawable/chevron_right_24px" />
+
             </LinearLayout>
 
-            <!-- Cours Cards (horizontal scroll) -->
-            <HorizontalScrollView
+            <!-- RecyclerView Planning horizontal -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPlanning"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:scrollbars="none">
-                <!--TODO-->
+                android:layout_height="160dp"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                android:scrollbars="none" />
 
-            </HorizontalScrollView>
-
-            <!-- Actualités Title -->
+            <!-- Titre Actualités -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/actualites"
+                    android:text="Actualité"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
+
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/chevron_right_icon"
                     android:src="@drawable/chevron_right_24px" />
+
             </LinearLayout>
 
-            <!-- Actualités Bloc -->
-            <LinearLayout
+            <!-- RecyclerView News vertical -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical">
-                <!--TODO-->
-            </LinearLayout>
+                android:scrollbars="vertical" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="25dp">
+
+    <ImageView
+        android:id="@+id/imageViewDashboard"
+        android:layout_width="72dp"
+        android:layout_height="121dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="Image élément dashboard"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="124dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titre de l'élément"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingTop="4dp"
+            android:text="Sous-titre de l'élément"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="287dp"
+            android:layout_height="77dp"
+            android:drawableLeft="@drawable/logo"
+            android:drawablePadding="4dp"
+            android:paddingTop="4dp"
+            android:text="Heure de l'élément"
+            android:textSize="30sp" />
+    </LinearLayout>
+</LinearLayout>
