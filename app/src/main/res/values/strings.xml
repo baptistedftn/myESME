@@ -23,4 +23,5 @@
     <string name="chose_module">Choisissez un module</string>
     <string name="title_assos">Assos</string>
     <string name="illustration">Illustration</string>
+    <string name="image_event">Image de l\'événement</string>
 </resources>
