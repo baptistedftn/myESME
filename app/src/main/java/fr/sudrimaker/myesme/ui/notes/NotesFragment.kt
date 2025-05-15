@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import fr.sudrimaker.myesme.R
 import fr.sudrimaker.myesme.databinding.FragmentNotesBinding
 
@@ -51,18 +48,56 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNotesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbar.setOnClickListener {
             findNavController().navigate(R.id.action_global_navigation_menu_main)
         }
+
+        // Organiser les notes par module et calculer les moyennes
+        val notesItems = prepareNotesItems()
+
         val recyclerView = binding.notesRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = NotesAdapter(notes)
+        recyclerView.adapter = NotesAdapter(notesItems)
+    }
+
+    private fun prepareNotesItems(): List<NotesItem> {
+        // Regrouper les notes par module
+        val notesByModule = notes.groupBy { it.module }
+
+        val result = mutableListOf<NotesItem>()
+
+        // Pour chaque module, calculer la moyenne et créer les items
+        notesByModule.forEach { (module, moduleNotes) ->
+            // Calculer la moyenne pondérée du module
+            var totalWeightedSum = 0.0
+            var totalCoefficients = 0
+
+            moduleNotes.forEach { note ->
+                totalWeightedSum += note.note * note.coefficient
+                totalCoefficients += note.coefficient
+            }
+
+            val average = if (totalCoefficients > 0) {
+                totalWeightedSum / totalCoefficients
+            } else {
+                0.0
+            }
+
+            // Ajouter l'en-tête du module avec sa moyenne
+            result.add(NotesItem.ModuleHeader(module, average))
+
+            // Ajouter les notes individuelles du module
+            moduleNotes.forEach { note ->
+                result.add(NotesItem.NoteItem(note))
+            }
+        }
+
+        return result
     }
 
     override fun onDestroyView() {
