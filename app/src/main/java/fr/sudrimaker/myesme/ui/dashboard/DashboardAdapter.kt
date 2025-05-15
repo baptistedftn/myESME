@@ -1,45 +1,47 @@
-// DashboardAdapter.kt
-package fr.sudrimaker.myesme.ui.dashboard // Ajustez le package si nécessaire
+package fr.sudrimaker.myesme.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.sudrimaker.myesme.R
-import fr.sudrimaker.myesme.model.DashboardItem
+import fr.sudrimaker.myesme.databinding.ItemDashboardCardBinding
 
 class DashboardAdapter(private val dashboardList: List<DashboardItem>) :
     RecyclerView.Adapter<DashboardAdapter.DashboardViewHolder>() {
 
-    class DashboardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val dashboardImage: ImageView = itemView.findViewById(R.id.imageViewDashboard)
-        val dashboardTitle: TextView = itemView.findViewById(R.id.textViewTitle)
-        val dashboardSubtitle: TextView = itemView.findViewById(R.id.textViewSubtitle)
-        val dashboardTime: TextView = itemView.findViewById(R.id.textViewTime)
-    }
+    class DashboardViewHolder(val binding: ItemDashboardCardBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_dashboard_card, parent, false)
-        return DashboardViewHolder(view)
+        val binding =
+            ItemDashboardCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return DashboardViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DashboardViewHolder, position: Int) {
         val item = dashboardList[position]
-        holder.dashboardTitle.text = item.title
-        holder.dashboardSubtitle.text = item.subtitle
-        holder.dashboardTime.text = item.time
+        with(holder.binding) {
+            textViewTitle.text = item.title
+            textViewSubtitle.text = item.subtitle
+            textViewTime.text = item.time
 
-        Glide.with(holder.itemView.context)
-            .load(item.imageUrl)
-            .placeholder(R.drawable.arrow_back_24px)
-            .error(R.drawable.chevron_right_24px)
-            .into(holder.dashboardImage)
+            // Afficher l'emplacement si disponible
+            if (item.location.isNotEmpty()) {
+                textViewLocation.visibility = View.VISIBLE
+                textViewLocation.text = item.location
+            } else {
+                textViewLocation.visibility = View.GONE
+            }
+
+            Glide.with(root.context)
+                .load(item.imageUrl)
+                .placeholder(R.drawable.arrow_back_24px)
+                .error(R.drawable.chevron_right_24px)
+                .into(imageViewDashboard)
+        }
     }
 
     override fun getItemCount(): Int = dashboardList.size
 }
- 

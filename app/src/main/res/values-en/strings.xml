@@ -20,4 +20,5 @@
     <string name="chose_module">Choose a module</string>
     <string name="title_assos">Clubs</string>
     <string name="illustration">llustration</string>
+    <string name="image_event">Event Image</string>
 </resources>
